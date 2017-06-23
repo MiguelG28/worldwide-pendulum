@@ -1,0 +1,54 @@
+
+    <app-main-section>
+      <div class="container padded" fxLayout="column" fxLayoutAlign="space-around center">
+        <div class="container padded">
+          <md-card>    
+            <md-card-content>
+              <div>
+                <md-data-table [selectable]="true">
+                    <thead>
+                      <tr>
+                        <td class="md-data-check-cell"> 
+                          <md-icon>filter_list</md-icon>
+                        </td>
+                        <td class="md-text-cell">
+                          <md-input-container>
+                            <input mdInput placeholder="Material">
+                          </md-input-container>  
+                        </td>
+                        <td >
+                          <md-input-container>
+                            <input mdInput placeholder="Quantity">
+                          </md-input-container>  
+                        </td>
+                        <td>
+                          <md-input-container>
+                            <input mdInput placeholder="Price">
+                          </md-input-container>  
+                        </td>
+                      </tr>
+                    </thead>
+                </md-data-table>
+              </div>
+              <div class="main-scrollable">
+                <md-data-table [selectable]="true">
+                    <tbody>
+                      <tr *ngFor="let material of materials"  md-data-table-selectable-row [selectable-value]="material.id">
+                        <td class="md-text-cell">{{ material.name }}</td>
+                        <td>{{ material.quantity }}</td>
+                        <td>{{ material.price }}</td>
+                      </tr>
+                    </tbody>
+                </md-data-table>
+              </div>
+            </md-card-content>
+          </md-card>
+          <div class="container margin-top">
+            <div fxLayout="row">        
+              <button md-button fxFlex="20">QUIT WITHOUT CHANGES</button>              
+              <a md-raised-button fxFlexOffset="60" fxFlex="20" userForm="" routerLink="../welcome">SAVE CHANGES</a>             
+            </div>
+          </div>
+        </div>        
+      </div>
+    </app-main-section>

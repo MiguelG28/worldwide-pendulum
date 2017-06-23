@@ -1,0 +1,46 @@
+
+    <app-main-section>
+      
+            <div class="container padded margin-top">
+              
+              <!-- Form start -->
+              <form class="start-form" [formGroup]="loginForm" (ngSubmit)="doLogin(userForm.value)" > 
+                <div class="container padded">
+                  <div fxLayout="column" fxLayoutAlign="space-around center">
+                    <div fxFlex="20"></div>
+                    <div fxFlex="60">
+                      <md-card>
+                        <md-input-container class="margin-top full-width">
+                          <input formControlName="username" [formControl]="loginForm.controls['username']" mdInput placeholder="{{ elements_arr['username'] }}">
+                        </md-input-container>
+                        <md-input-container class="margin-top full-width">
+                          <input formControlName="password" [formControl]="loginForm.controls['password']" mdInput #initdist maxlength="16" placeholder="{{ elements_arr['password'] }}" value="">
+                          <md-hint align="end">Remember the password</md-hint>
+                        </md-input-container>
+                        <md-input-container class="margin-top full-width">
+                          <input formControlName="repeat_password" [formControl]="loginForm.controls['repeat_password']" mdInput #initdist maxlength="16" placeholder="{{ elements_arr['repeat_password'] }}" value="">
+                          <md-hint align="end">Remember the password</md-hint>
+                        </md-input-container>
+                        <section class="margin-top start-section">
+                          <md-input-container class="margin-top full-width">
+                            <a md-raised-button fxFlexOffset="60" fxFlex="20" userForm="" routerLink="">Create</a>
+                          </md-input-container>
+                        </section>
+                      </md-card>
+                    </div>
+                    <div fxFlex="20"></div>
+                  </div>  
+                </div>
+              </form>
+              <!-- Form end -->
+            </div>
+            <div class="container padded">
+              <div class="button-row" fxLayout="row" fxFlex="20" fxFlexOffset="80">
+                <a md-raised-button launchForm="" routerLink="../active">{{ elements_arr['start_tab_start_button'] }}</a>
+              </div>
+            </div> 
+
+        
+          
+    </app-main-section>
+

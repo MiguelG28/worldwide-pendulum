@@ -1,0 +1,79 @@
+
+
+<div class="container padded margin-top">
+<!-- Form start -->
+  <form class="start-form" [formGroup]="schedForm" (ngSubmit)="schedule_test(schedForm.value)"> 
+    <div class="container padded">
+      <div fxLayout="row" fxLayoutAlign="space-around" fxFlexAlign="baseline">   
+          <div fxFlex="45">
+            <md-card>
+              <md-input-container class="margin-top full-width">
+                <input class="form-control" formControlName="oscillations" mdInput placeholder="{{ elements_arr['oscillations'] }}">
+              </md-input-container>
+
+              <md-input-container class="margin-top full-width">
+                  <input formControlName="initialDistance" mdInput #initdist maxlength="3" placeholder="{{ elements_arr['initial_distance'] }}" >
+                  <md-hint align="end">{{initdist.value.length}} / 3</md-hint>
+              </md-input-container>
+
+              <!-- oscillations slider -->
+              <section class="margin-top start-section">
+                  <md-slider class="full-width" id="oscilation-slider" min="5" max="50" step="1" tick-interval="1" value="28"></md-slider>
+              </section>
+            </md-card>
+          </div>
+          
+          <div fxFlex="45">
+            <md-card>
+              <label for="dp">Execution date</label>
+              <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker formControlName="date" #d="ngbDatepicker">
+                <div class="input-group-addon" (click)="d.toggle()" >
+                  <img src="../../assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                </div>
+              </div>
+              <small class="form-text text-muted">Date, time and interval will depend on availability and a priority queue.</small>
+              <br/>
+              <label for="execTime">Execution time</label>
+              <div fxFlex="100" fxLayout="column" fxLayoutAlign="space-around center">
+                  <ngb-timepicker id="execTime" [seconds]="true" formControlName="time"></ngb-timepicker>
+              </div>
+              <br/>
+
+              <div fxFlex="100" fxLayout="row" fxLayoutAlign="begin center">
+                <div fxFlex="20" >
+                  <label for="execTime">Repeat</label>
+                </div>
+                <div fxFlex="80" >
+                  <md-slide-toggle (change)="useRepeat=!useRepeat;repeatInterval=false;repeatIndeterminate=true" style="float:right"[color]="blue" [checked]="false"></md-slide-toggle>
+                </div>
+              </div>
+              <br/>
+              <div *ngIf="useRepeat" fxFlex="100" fxLayout="column" fxLayoutAlign="space-around center">
+                <!--<md-slide-toggle>Interval</md-slide-toggle>-->
+                <div fxFlex="88" fxFlexOffset="12" fxLayout="column">
+                  <md-radio-group>
+                    <md-radio-button [checked]="repeatIndeterminate" (change)="repeatInterval=false;repeatIndeterminate=true">Repeat indeterminately</md-radio-button>
+                    <!--<small class="form-text text-muted">Can only be stoped from dashboard</small>-->
+                    <md-radio-button [checked]="repeatInterval" (change)="repeatInterval=true;repeatIndeterminate=false" [value]="false">Repeat at interval</md-radio-button>
+                    <br/>  
+                  </md-radio-group>
+                </div>
+                <ngb-timepicker [seconds]="true" *ngIf="repeatInterval" formControlName="timeinterval"></ngb-timepicker>
+                <br/>
+              </div>
+            </md-card>            
+            
+          </div>
+      </div>
+    </div>
+
+    <div class="container padded">
+      <div class="button-row" fxLayout="row" fxFlex="20" fxFlexOffset="80">
+        <a md-raised-button launchForm="" routerLink="../active">Agendar {{ elements_arr['start_tab_start_button'] }}</a>
+      </div>
+    </div>  
+  </form>
+</div>
+
+

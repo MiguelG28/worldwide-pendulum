@@ -1,0 +1,70 @@
+    <app-main-section>
+        <div class="container margin-top" >
+          <div class="" fxLayout="row" fxLayoutAlign="space-around center">
+            <div fxFlex="30">
+              <md-card class="welcome-card">
+                <md-card-header>
+                  <div md-card-avatar><md-icon>power_settings_new</md-icon></div>
+                  <md-card-title>Interagir</md-card-title>
+                  <md-card-subtitle><small>Controlar o Pendulo</small></md-card-subtitle>
+                </md-card-header>
+                <br/>
+                <div class="progress">
+                  <div class="determinate" style="width: 50%"></div>
+                </div>
+                <br/>
+                <div class="progress">
+                  <div class="indeterminate"></div>
+                </div>
+                <br/>
+                <div class="progress">
+                  <div class="determinate" style="width: 66%"></div>
+                </div>
+                <br/>
+                <md-card-content>
+                  <p>Lançar a maquina imediatamente e ver o pendulo a medir a gravidade onde estás.</p>
+                  <!--<p><strong>Prepara te!</strong></p>-->
+                </md-card-content>
+                <md-card-actions fxLayoutAlign="space-around center">
+                  <button md-button class="pulse-button" routerLink="../start/0">{{ elements_arr['welcome_interact_machine_button'] }}<md-icon>keyboard_arrow_right</md-icon></button>
+                </md-card-actions>
+              </md-card>
+            </div>
+            <div fxFlex="30" fxFlexOffset="5">
+              <md-card class="welcome-card">
+                <md-card-header>
+                  <div md-card-avatar><md-icon>insert_chart</md-icon></div>
+                  <md-card-title>Ver dados</md-card-title>
+                  <md-card-subtitle><small>Experiências passadas</small></md-card-subtitle>
+                </md-card-header>
+                
+                <md-card-content>
+                  <canvas #myCanvas height="300" class="full-width"></canvas>
+                  <p>Aquí poderá ver experiências feitas anteriormente.</p>
+                </md-card-content>
+                <md-card-actions fxLayoutAlign="space-around center">
+                  <button md-button routerLink="../data-view">{{ elements_arr['welcome_go_data_view_button'] }}<md-icon>keyboard_arrow_right</md-icon></button>
+                </md-card-actions>
+              </md-card>
+            </div>
+
+            <div fxFlex="30" fxFlexOffset="5">
+              <md-card class="welcome-card">
+                <md-card-header>
+                  <div md-card-avatar><md-icon>wallpaper</md-icon></div>
+                  <md-card-title>Interatividade</md-card-title>
+                  <md-card-subtitle><small>lua-terra-maré</small></md-card-subtitle>
+                </md-card-header>
+                <img md-card-image src="assets/moon_animation.gif">
+                <md-card-content>
+                  <p>Toque aqui para continuar para uma animação do relacionamento entre a lua a terra e a maré.</p>
+                </md-card-content>
+                <md-card-actions fxLayoutAlign="space-around center">
+                  <button md-button>{{ elements_arr['welcome_interact_animation_button'] }}<md-icon>keyboard_arrow_right</md-icon></button>
+                </md-card-actions>
+              </md-card>
+            </div>
+          </div>    
+        </div>    
+  
+    </app-main-section>

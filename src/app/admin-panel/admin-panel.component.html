@@ -1,0 +1,174 @@
+
+<app-main-section>
+
+        <!--<md-card>
+          <md-card-header fxLayout="row">
+            <div fxFlexOffset="0" fxFlex="100">
+              <h1 class="display-4">Control panel</h1> 
+              <h4><small>You are an admin now and you may use this machine for scientific purpouses. Come back in a while!</small></h4>
+            </div>
+          </md-card-header>     
+        </md-card>-->
+
+  <md-tab-group md-stretch-tabs="always" (selectedIndexChange)="changeIndexHandler($event)" [(selectedIndex)]="activeTab">
+    
+        <md-tab label="Upcoming jobs">
+          <div class="container padded">
+            <div class="row margin-top">
+              <md-card fxFlex="90" fxFlexOffset="5">
+                <md-card-header fxLayout="row">
+                  <div fxFlex="90">
+                    <h4>
+                      <small>Upcoming jobs</small>         
+                    </h4>
+                    <hr>
+                  </div>
+                  <div fxFlex="10">
+                    <button md-fab class="float-right"><md-icon>add</md-icon></button>  
+                  </div>
+                </md-card-header>
+                <md-card-content>
+                  <div class="main-scrollable">
+                    <md-data-table [selectable]="true">
+                        <thead>
+                        <tr md-data-table-header-selectable-row>
+                          <th class="md-text-cell">Material</th>
+                          <th>Quantity</th>
+                          <th>Unit price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let material of materials"  md-data-table-selectable-row [selectable-value]="material.id">
+                          <td class="md-text-cell">{{ material.name }}</td>
+                          <td>{{ material.quantity }}</td>
+                          <td>{{ material.price }}</td>
+                        </tr>
+                        </tbody>
+                    </md-data-table>
+                  </div>
+                </md-card-content>
+              </md-card>
+              </div>
+            </div>
+        </md-tab>
+
+        <md-tab label="User accounts / permissions">
+          <div class="container padded">
+            <div class="row margin-top">
+              <md-card fxFlex="90" fxFlexOffset="5">
+                <md-card-header fxLayout="row">
+                  <div fxFlex="90">
+                    <h4>
+                      <small>User accounts/ permissions</small>
+                    </h4>
+                    <hr>
+                  </div>
+                  <div fxFlex="10">
+                    <button md-fab class="float-right"><md-icon>add</md-icon></button>  
+                  </div>
+                </md-card-header>
+                <md-card-content>
+                  <div class="main-scrollable">
+                    <md-data-table [selectable]="true">
+                        <thead>
+                        <tr md-data-table-header-selectable-row>
+                          <th class="md-text-cell">Material</th>
+                          <th>Quantity</th>
+                          <th>Unit price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let material of materials"  md-data-table-selectable-row [selectable-value]="material.id">
+                          <td class="md-text-cell">{{ material.name }}</td>
+                          <td>{{ material.quantity }}</td>
+                          <td>{{ material.price }}</td>
+                        </tr>
+                        </tbody>
+                    </md-data-table>
+                  </div>
+                </md-card-content>
+              </md-card>
+              </div>
+            </div>
+        </md-tab>
+
+        <md-tab label="Recent jobs">
+          <div class="container padded">
+            <div class="row margin-top">
+              <md-card fxFlex="90" fxFlexOffset="5">
+                <md-card-header fxLayout="row">
+                  <div fxFlex="100">
+                    <h4>
+                      <small>Recent jobs</small>
+                    </h4>
+                    <hr>
+                  </div>
+                </md-card-header>
+                <md-card-content>
+                  <div class="main-scrollable">
+                    <md-data-table [selectable]="true">
+                        <thead>
+                        <tr md-data-table-header-selectable-row>
+                          <th class="md-text-cell">Material</th>
+                          <th>Quantity</th>
+                          <th>Unit price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let material of materials"  md-data-table-selectable-row [selectable-value]="material.id">
+                          <td class="md-text-cell">{{ material.name }}</td>
+                          <td>{{ material.quantity }}</td>
+                          <td>{{ material.price }}</td>
+                        </tr>
+                        </tbody>
+                    </md-data-table>
+                  </div>
+                </md-card-content>
+              </md-card>
+              </div>
+            </div>
+        </md-tab>
+
+        <md-tab label="Your info">
+          <div class="container padded">
+            <div class="row margin-top">
+              <div fxFlex="90" fxFlexOffset="5">
+                <md-card>
+                  <md-card-header fxLayout="row">
+                    <div fxFlex="100">
+                      <h4><small>Your info</small></h4>
+                      <hr>
+                    </div>
+                  </md-card-header>
+                  <md-card-content fxLayout="row" fxLayoutAlign="start center">  
+                    <div fxFlexOffset="5" fxFlex="45">
+                      <!-- Form start -->
+                      <form class="start-form" [formGroup]="userForm" (ngSubmit)="launch_machine(userForm.value)" > 
+                        <md-input-container class="margin-top full-width">
+                          <input formControlName="oscillations" [formControl]="userForm.controls['oscillations']" mdInput placeholder="{{ elements_arr['oscillations'] }}">
+                        </md-input-container>
+                        <md-input-container class="margin-top full-width">
+                          <input formControlName="initial_distance" [formControl]="userForm.controls['initial_distance']" mdInput #initdist maxlength="3" placeholder="{{ elements_arr['initial_distance'] }}" value="100cm">
+                          <md-hint align="end">{{initdist.value.length}} / 3</md-hint>
+                        </md-input-container>
+                      </form>
+                    </div>
+                    <div fxFlexOffset="0" fxFlexOffset="17" fxFlex="20">
+                      <img md-card-image style="margin-top:50px;width:192px" src="../../assets/img/user.svg">
+                    </div>
+                  </md-card-content>   
+                </md-card>
+              </div>
+            </div>
+          </div>
+        </md-tab>
+  </md-tab-group>
+  <br/>
+  <div class="container">
+    <div fxLayoutAlign="space-around center" fxFlexOffset="10" fxFlex="40"></div>
+    <div fxLayout="row">        
+      <button md-button fxFlex="20">QUIT WITHOUT CHANGES</button>              
+      <a md-raised-button fxFlexOffset="60" fxFlex="20" userForm="" routerLink="../welcome">SAVE CHANGES</a>             
+    </div>
+  </div>
+</app-main-section>

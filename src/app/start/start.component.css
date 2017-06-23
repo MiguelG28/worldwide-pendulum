@@ -1,0 +1,43 @@
+
+.spacer {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+
+.margin-top{
+    margin-top:40px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.height-spacer{
+    height:60px;
+}
+
+.start-section{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+.start-margin{
+    margin:60px;
+}
+
+.example-header-image {
+  background-size: cover;
+}
+
+.page-padding{
+    padding: 0 1.5em 1.5em 1.5em;
+}

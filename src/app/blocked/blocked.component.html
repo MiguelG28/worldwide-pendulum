@@ -1,0 +1,37 @@
+
+    <app-main-section>
+      <div class="container padded margin-top" fxLayout="column" fxLayoutAlign="space-around center">
+        <div class="container padded">
+          <md-card>
+            <md-card-header fxLayout="row">
+              <div fxFlex="60">
+                <h1 class="display-4">Attention!</h1> 
+              </div>
+            </md-card-header>     
+            <md-card-header fxLayout="row" fxLayoutAlign="space-around center">  
+              <div fxFlex="60">
+                <h4><small>A scientist is using this machine for scientific purpouses. Come back in a while!</small></h4>
+              </div>
+              <div fxLayoutAlign="space-around center" fxFlexOffset="0" fxFlex="40">
+                <ngb-timepicker [spinners]="false" [seconds]="true"></ngb-timepicker>
+              </div>
+            </md-card-header>      
+            <br/>
+            <hr>
+            <br/>
+            <br/>
+            <md-card-content fxLayoutAlign="space-around center">
+              <h4><p class="lead">Did you know that the earth is approx <strong>4.54</strong> billion years old?</p></h4>    
+              <img style="width:135px" md-card-image src="../../assets/img/rocket.png">
+            </md-card-content>
+            <br/>
+            <hr>
+            <br/>
+            <div fxLayout="row">        
+              <button md-button fxFlex="20">I CAN'T WAIT</button>              
+              <a md-raised-button fxFlexOffset="60" fxFlex="20" launchForm="" routerLink="../welcome">LEAVE</a>             
+            </div>
+          </md-card>
+        </div>        
+      </div>
+    </app-main-section>

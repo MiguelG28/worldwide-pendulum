@@ -1,0 +1,24 @@
+
+.center-stage{
+    height:350px;
+    overflow-y: auto
+}
+
+table{
+    border:none;
+    border-collapse: collapse;
+}
+
+th{
+    text-align: left;
+}
+
+td{
+    padding:10px;
+    width:47%;
+}
+
+.odd{
+    background-color: #eff1ff;
+}
+

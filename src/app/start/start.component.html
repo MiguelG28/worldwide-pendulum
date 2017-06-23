@@ -1,0 +1,43 @@
+
+    <app-main-section>
+      <md-tab-group md-stretch-tabs="always" (selectedIndexChange)="changeIndexHandler($event)" [(selectedIndex)]="activeTab">
+        <md-tab label="{{ elements_arr['start_tab_title'] }}">
+            <div class="container padded margin-top">
+              
+              <!-- Form start -->
+              <form class="start-form" [formGroup]="launchForm" (ngSubmit)="launch_machine(launchForm.value)" > 
+                <div class="container padded">
+                  <div fxLayout="column" fxLayoutAlign="space-around center">   
+                    <div fxFlex="20"></div>
+                    <div fxFlex="60">
+                      <md-card>
+                        <md-input-container class="margin-top full-width">
+                          <input formControlName="oscillations" [formControl]="launchForm.controls['oscillations']" mdInput placeholder="{{ elements_arr['oscillations'] }}">
+                        </md-input-container>
+                        <md-input-container class="margin-top full-width">
+                          <input formControlName="initial_distance" [formControl]="launchForm.controls['initial_distance']" mdInput #initdist maxlength="3" placeholder="{{ elements_arr['initial_distance'] }}" value="100cm">
+                          <md-hint align="end">{{initdist.value.length}} / 3</md-hint>
+                        </md-input-container>
+                        <section class="margin-top start-section">
+                          <md-slider class="full-width" id="oscilation-slider" min="5" max="50" step="1" tick-interval="1" value="28"></md-slider>
+                        </section>
+                      </md-card>
+                    </div>
+                    <div fxFlex="20"></div>
+                  </div>  
+                </div>
+              </form>
+              <!-- Form end -->
+            </div>
+            <div class="container padded">
+              <div class="button-row" fxLayout="row" fxFlex="20" fxFlexOffset="80">
+                <a md-raised-button launchForm="" routerLink="../../active">{{ elements_arr['start_tab_start_button'] }}</a>
+              </div>
+            </div> 
+        </md-tab>
+        <md-tab label="{{elements_arr['sched_tab_title']}}">
+          <app-sched></app-sched>
+        </md-tab>
+      </md-tab-group>
+    </app-main-section>
+

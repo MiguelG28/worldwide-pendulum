@@ -1,0 +1,41 @@
+
+  <nav class="fixed-navbar">
+
+    <ul fxFlex="10" fxFlexOffset="5" class="nav navbar-nav">
+      <li *ngIf="!navService.back_visible" class="nav-item active">
+        <a md-button><md-icon>power_settings_new</md-icon> {{ elements_arr['shutdown'] }}</a>
+      </li>
+      <li *ngIf="navService.back_visible" class="nav-item active">
+        <a *ngIf="!navService.exitable" style="color:cacaca;" disabled md-button ><md-icon>chevron_left</md-icon>{{ elements_arr['back'] }}</a>
+        <a *ngIf="navService.exitable" style="color:#3f51b5" md-button routerLink="."><md-icon>chevron_left</md-icon>{{ elements_arr['back'] }}</a>
+      </li>
+    </ul>
+
+    <ul fxFlex="40" fxFlexOffset="50" class="nav navbar-nav">
+      <li class="nav-item">
+        <a md-button routerLink=".">{{ elements_arr['tutorial_mode'] }}</a>
+      </li>
+      <li class="nav-item">
+        <a md-button [mdMenuTriggerFor]="menu">
+          <span>{{ elements_arr['language'] }}</span>
+          <md-icon>more_vert</md-icon>
+        </a>
+        <md-menu #menu="mdMenu">
+          <button md-menu-item (click)="changeLang('en-GB')" >
+            <img src="../../assets/EN.png"/>&nbsp;
+            <span>English</span>
+          </button>
+          <button md-menu-item (click)="changeLang('pt-PT')" >
+            <img src="../../assets/PT.png"/>&nbsp;
+            <span>Português</span>
+          </button>
+        </md-menu>
+      </li>
+      <li *ngIf="!this.ass.appState.isAuthenticated" class="nav-item">
+        <a md-button routerLink=".">{{ elements_arr['authenticate'] }} <md-icon>account_circle</md-icon></a>
+      </li>
+      <li *ngIf="this.ass.appState.isAuthenticated" class="nav-item">
+        <a md-button routerLink=".">Bem vindo {{ this.ass.appState.current_user.id + ' ' + this.ass.appState.current_user.username }} <md-icon>account_circle</md-icon></a>
+      </li>
+    </ul>
+  </nav>

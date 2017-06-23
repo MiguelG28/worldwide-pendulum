@@ -1,0 +1,59 @@
+
+    <app-main-section>
+        <div class="container">
+          <div class="row">
+            <md-card fxFlex="100" >
+              <md-card-content>
+                <h2 class="example-h2">{{elements_arr['active_observe_machine']}}</h2>
+                <md-progress-bar
+                    class="full-width"
+                    [color]="color"
+                    [mode]="buffer"
+                    [value]="main_progress_value"
+                    [bufferValue]="main_progress_buffer_value">
+                </md-progress-bar>
+              </md-card-content>
+            </md-card>
+          </div>
+        </div>
+
+        <div class="container" style="padding-top:21px;">
+          <div fxLayout="row">
+            <!--right part-->
+            <div fxFlex="80" fxFlexOffset="0">
+                <md-card id="expscreen" #expscreen class="center-stage">
+                  <table fxLayoutAlign="space-around center">
+                    <tr>
+                      <th>{{elements_arr['table_reading']}}</th>
+                      <th>{{elements_arr['table_value']}}</th>
+                      <th>{{elements_arr['table_time']}} </th>
+                    </tr>
+                    <tr *ngFor="let row of rows; let i=index; let o=odd; " [ngClass]="{ odd: o }">
+                      <td>{{ i + 1 }}</td>
+                      <td>{{ row['reading'] | gravity }}<small>g</small></td>
+                      <td>{{ row['time'] }}<small>ms</small></td>
+                    </tr>
+                  </table>
+                </md-card>
+            </div>
+            <!--right part-->
+            <div fxFlex="30" fxFlexOffset="2">
+              <md-card class="center-stage" >
+                <md-card-content  style="text-align:center;">
+                  <strong>{{ elements_arr['active_actions']}}</strong><br/><br/>
+                  <p>{{ elements_arr['active_actions_warning']}}</p><br/>
+                  <p>{{ elements_arr['active_actions_sugestion']}}</p><br/>
+                </md-card-content>
+                <md-card-actions fxLayoutAlign="space-around center">
+                  <button md-raised-button>{{ elements_arr['active_stop_button'] }}</button>
+                </md-card-actions>
+              </md-card>
+              <div class="margined container padded" fxLayout="row" fxLayout="row" fxLayoutAlign="space-around center">
+                <button md-raised-button routerLink="../finished" >{{ elements_arr['active_next_button']}}<md-icon>keyboard_arrow_right</md-icon></button>
+              </div>
+            </div>
+         </div>
+      </div>
+
+    </app-main-section>
+
