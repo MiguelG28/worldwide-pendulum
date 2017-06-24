@@ -1,6 +1,7 @@
 import { NgModule }              from '@angular/core';
 import { RouterModule, Routes }  from '@angular/router';
  
+
 import { WelcomeComponent } from './welcome/welcome.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
@@ -11,8 +12,10 @@ import { FinishedComponent } from './finished/finished.component';
 import { BlockedComponent } from './blocked/blocked.component';
 import { StartComponent } from './start/start.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+//Guards
+import { AuthGuard } from "./guards/auth.guard";
 
- 
+
 const appRoutes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full'},
   { path: 'welcome', component: WelcomeComponent },
@@ -20,7 +23,7 @@ const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'admin-panel', component: AdminPanelComponent },
   { path: 'data-view', component: DataViewComponent },
-  { path: 'active', component: ActiveComponent },
+  { path: 'active', component: ActiveComponent, canActivate: [AuthGuard]},
   { path: 'finished', component: FinishedComponent },
   { path: 'blocked', component: BlockedComponent },
   { path: 'start/:tab', component: StartComponent },
@@ -33,6 +36,7 @@ const appRoutes: Routes = [
   ],
   exports: [
     RouterModule
-  ]
+  ],
+  providers: [ AuthGuard ]
 })
 export class AppRouting {}
