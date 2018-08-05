@@ -1,0 +1,68 @@
+/*criar conta*/
+insert into users(display_name,password) values ('Joao Branco', 12345);
+
+/*altualizar password*/
+UPDATE users SET password=123 where id_users=1;
+
+/*apagar conta*/
+delete from users where id_users=7;
+
+/*criar experiencia*/
+insert into exp(distancia, nroscilacoes,datahora,faselua,alturamare,users_id_users) Values(10,5,'2017-04-27 10:30:45.964418','cheia',3,1);
+
+/*listar experiencias do utilizador*/
+select*from exp where users_id_users=1;
+
+/*apagar exp*/
+DELETE FROM exp WHERE id_exp=1;
+
+/*filtrar exp*/
+select * from exp where users_id_users=1 AND id_exp=3;
+
+/*marcar agendamento*/
+insert into agendamento(intervalotempo,nrepeticoes,datahoraagen,users_id_users)Values(3,2,'2017-04-27 10:30:45.964418',1);
+
+/*update agendamento*/
+UPDATE agendamento SET intervalotempo=5 where agendamento_id=9;
+
+/*listar agendamentos*/
+select * from agendamento where exp_users_id_users=2;
+
+/*desmarcar*/ 
+delete from agendamento where agendamento_id=1;
+
+/*marcar agendamento*/
+insert into agendamento(intervalotempo,nrepeticoes,datahoraagen,users_id_users)Values(3,2,'2017-04-27 10:30:45.964418',1);
+
+/*inserir user*/
+insert into users(display_name, password,perm) Values (kaka, 123,4)
+
+/*Iteracao agendamento*/
+UPDATE agendamento SET datahoraagen=addtime(datahoraagen,intervalotempo),nrepeticoes=nrepeticoes-1 where agendamento_id=9;
+
+/*filtrar resultados*/
+select * from Results where exp_users_id_users=1 AND exp_id_exp=1 AND results_id=1;
+
+/*inserir feedback*/
+insert into avalscreen(Route, Avaliation,FeedBack,users_id_users) Values ('page3','informartiva',5,9);
+
+/*inserir resultados */
+insert into results (time, exp_id_exp,exp_users_id_users) VALUES(0.1, 8, 10)
+
+/*Join da tabela dos utilizadores com a tabela dos agendamentos(Filtros)*/
+
+SELECT agendamento.Utilizadores_ID_Uti,utilizadores.Nome_Apresentacao, agendamento.ID_Agendamento, agendamento.Nr_Repeticoes, agendamento.Data_Hora_Agen,agendamento.Distancia,agendamento.Nr_Oscilacoes
+from utilizadores
+Inner join agendamento on utilizadores.ID_Uti=agendamento.Utilizadores_ID_Uti
+
+/*Join da tabela dos utilizadores com a tabela das experiências(Filtros)*/
+
+SELECT exp.Utilizadores_ID_Uti,utilizadores.Nome_Apresentacao, exp.ID_Exp, exp.Distancia, exp.Distancia, exp.Nr_Oscilacoes , exp.Data_Hora , exp.Fase_Lua , exp.Altura_Mare
+from utilizadores
+Inner join exp on utilizadores.ID_Uti=exp.Utilizadores_ID_Uti
+
+/*Com o agendamento criar a proxima iteração do agendamento*/
+
+INSERT INTO agendamento (Intervalo_Tempo, Nr_Repeticoes, Data_Hora_Agen, Distancia,Nr_Oscilacoes, Utilizadores_ID_Uti) 
+SELECT Intervalo_Tempo, Nr_Repeticoes-1, addtime(Data_Hora_Agen,Intervalo_Tempo), Distancia,Nr_Oscilacoes,Utilizadores_ID_Uti 
+from agendamento where ID_Agendamento=24 AND Utilizadores_ID_Uti=1;
